@@ -18,12 +18,6 @@ export default class EditPrediction extends Component {
         description: "",
         updated_at: "",
       },
-      // teamToWin: [
-      //   {id: "A1", value:"Qatar"},
-      //   {id: "A2", value:"Ecuador"},
-      //   {id: "A3", value:"Senegal"},
-      //   {id: "A4", value:"Netherlands"},
-      // ],
       isLoaded: false,
       error: null,
       wasSuccess: false,
@@ -35,8 +29,7 @@ export default class EditPrediction extends Component {
       },
     };
 
-    // handler for change
-    // handler for submit
+    // handler for change/submit
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
