@@ -37,6 +37,7 @@ export default class EditPrediction extends Component {
 
     // handler for change
     // handler for submit
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
