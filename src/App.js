@@ -9,6 +9,7 @@ import MyPredictions from "./components/MyPredictions";
 import EditPrediction from "./components/EditPrediction";
 import { Component, Fragment } from "react";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 export default class App extends Component {
   constructor(props) {
@@ -142,6 +143,11 @@ export default class App extends Component {
                     <Login {...props} handleJWTChange={this.handleJWTChange} />
                   )}
                 />
+
+                {/* REGISTER */}
+                <Route exact path="/register">
+                  <Register />
+                </Route>
 
                 <Route
                   exact

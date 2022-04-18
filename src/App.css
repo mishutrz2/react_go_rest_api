@@ -15,6 +15,11 @@
   font-size: large;
 }
 
+.registerButton {
+  color: black;
+  text-decoration: none;
+}
+
 .descriptivePs {
   text-align: justify;
 }

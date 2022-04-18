@@ -17,15 +17,44 @@ export default class EditPrediction extends Component {
         title: "",
         description: "",
         updated_at: "",
-        team: "",
+        winner: "",
       },
       teams: [
-        { id: "A1", value: "Qatar" },
-        { id: "A2", value: "Ecuador" },
-        { id: "A3", value: "Senegal" },
-        { id: "A4", value: "Netherlands" },
-        { id: "B1", value: "England" },
-        { id: "B2", value: "Iran" },
+        { id: "Qatar", value: "Qatar" },
+        { id: "Ecuador", value: "Ecuador" },
+        { id: "Senegal", value: "Senegal" },
+        { id: "Netherlands", value: "Netherlands" },
+        { id: "England", value: "England" },
+        { id: "Iran", value: "Iran" },
+        { id: "USA", value: "USA" },
+        { id: "Ukraine/Scotland/Wales", value: "Ukraine/Scotland/Wales" },
+
+        { id: "Argentina", value: "Argentina" },
+        { id: "Saudi Arabia", value: "Saudi Arabia" },
+        { id: "Mexico", value: "Mexico" },
+        { id: "Poland", value: "Poland" },
+        { id: "France", value: "France" },
+        { id: "Australia/UAE/Peru", value: "Australia/UAE/Peru" },
+        { id: "Denmark", value: "Denmark" },
+        { id: "Tunisia", value: "Tunisia" },
+
+        { id: "Spain", value: "Spain" },
+        { id: "Costa Rica/New Zealand", value: "Costa Rica/New Zealand" },
+        { id: "Germany", value: "Germany" },
+        { id: "Japan", value: "Japan" },
+        { id: "Belgium", value: "Belgium" },
+        { id: "Canada", value: "Canada" },
+        { id: "Morocco", value: "Morocco" },
+        { id: "Croatia", value: "Croatia" },
+
+        { id: "Brazil", value: "Brazil" },
+        { id: "Serbia", value: "Serbia" },
+        { id: "Switzerland", value: "Switzerland" },
+        { id: "Cameroon", value: "Cameroon" },
+        { id: "Portugal", value: "Portugal" },
+        { id: "Ghana", value: "Ghana" },
+        { id: "Uruguay", value: "Uruguay" },
+        { id: "South Korea", value: "South Korea" },
       ],
       isLoaded: false,
       error: null,
@@ -153,7 +182,7 @@ export default class EditPrediction extends Component {
                 id: id,
                 title: json.prediction.title,
                 description: json.prediction.description,
-                team: json.prediction.team,
+                winner: json.prediction.winner,
               },
               isLoaded: true,
             },
@@ -265,9 +294,9 @@ export default class EditPrediction extends Component {
 
               <Select
                 title={"Winner"}
-                name={"team"}
+                name={"winner"}
                 options={this.state.teams}
-                value={prediction.team}
+                value={prediction.winner}
                 handleChange={this.handleChange}
                 placeholder={"Choose one ... "}
               />

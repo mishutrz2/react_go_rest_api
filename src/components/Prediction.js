@@ -67,7 +67,7 @@ export default class Prediction extends Component {
                 <td>
                   <strong> winner: </strong>
                 </td>
-                <td> {prediction.team}</td>
+                <td> {prediction.winner}</td>
               </tr>
               <tr>
                 <td>

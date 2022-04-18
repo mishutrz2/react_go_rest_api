@@ -1,7 +1,7 @@
 import Alert from "../ui-components/Alert";
 import React, { Component, Fragment } from "react";
 import Input from "./form-components/Input";
-
+import { Link } from "react-router-dom";
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -110,10 +110,26 @@ export default class Login extends Component {
     return (
       <Fragment>
         <br />
+
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <h2> login page </h2>
+          </div>
+          <div class="col-8 col-md-4">
+            <h6>
+              {" "}
+              No account? Click{" "}
+              <Link to="/register" className="registerButton">
+                {" "}
+                here{" "}
+              </Link>
+              to register{" "}
+            </h6>
+          </div>
+        </div>
+
         <hr />
 
-        <h2> login </h2>
-        <hr />
         <Alert
           alertType={this.state.alert.type}
           alertMessage={this.state.alert.message}
