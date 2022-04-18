@@ -145,9 +145,14 @@ export default class App extends Component {
                 />
 
                 {/* REGISTER */}
-                <Route exact path="/register">
+                <Route
+                  exact
+                  path="/register"
+                  component={(props) => <Register {...props} />}
+                />
+                {/* <Route exact path="/register">
                   <Register />
-                </Route>
+                </Route> */}
 
                 <Route
                   exact

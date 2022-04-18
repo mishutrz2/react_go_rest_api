@@ -7,7 +7,7 @@ export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fullname: "",
+      full_name: "",
       nickname: "",
       country: "",
       email: "",
@@ -19,11 +19,26 @@ export default class Register extends Component {
         message: "",
       },
     };
+
+    // ????? ???? ????
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   hasError(key) {
     return this.state.errors.indexOf(key) !== -1;
   }
+
+  // after user modification, handle changes
+  handleChange = (e) => {
+    let value = e.target.value;
+    let name = e.target.name;
+
+    this.setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -39,8 +54,8 @@ export default class Register extends Component {
     if (this.state.country === "") {
       errors.push("country");
     }
-    if (this.state.fullname === "") {
-      errors.push("fullname");
+    if (this.state.full_name === "") {
+      errors.push("full_name");
     }
     if (this.state.nickname === "") {
       errors.push("nickname");
@@ -54,13 +69,36 @@ export default class Register extends Component {
       return false;
     }
 
+    // get data from HTML form
     const data = new FormData(e.target);
+
+    // form a payload
     const payload = Object.fromEntries(data.entries());
 
+    // request options for POST
     const requestOptions = {
       method: "POST",
       body: JSON.stringify(payload),
     };
+
+    console.log(payload);
+
+    fetch(`${process.env.REACT_APP_API_URL}/v1/signup`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          this.setState({
+            alert: {
+              type: "alert-danger",
+              message: data.error.message,
+            },
+          });
+        } else {
+          this.props.history.push({
+            pathname: "/login",
+          });
+        }
+      });
   };
 
   render() {
@@ -75,10 +113,10 @@ export default class Register extends Component {
           <Input
             title={"full name"}
             type={"text"}
-            name={"fullname"}
+            name={"full_name"}
             handleChange={this.handleChange}
-            className={this.hasError("fullname") ? "is-invalid" : ""}
-            errorDiv={this.hasError("fullname") ? "text-danger" : "d-none"}
+            className={this.hasError("full_name") ? "is-invalid" : ""}
+            errorDiv={this.hasError("full_name") ? "text-danger" : "d-none"}
             errorMsg={"enter full name"}
           />
 
@@ -106,7 +144,7 @@ export default class Register extends Component {
 
           {/* EMAIL ADDRESS */}
           <Input
-            title={"email address"}
+            title={"email"}
             type={"email"}
             name={"email"}
             handleChange={this.handleChange}
