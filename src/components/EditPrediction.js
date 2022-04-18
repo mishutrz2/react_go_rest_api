@@ -5,7 +5,7 @@ import Alert from "../ui-components/Alert";
 import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
-
+import Select from "./form-components/Select";
 export default class EditPrediction extends Component {
   // set the state inside the constructor
   constructor(props) {
@@ -17,7 +17,16 @@ export default class EditPrediction extends Component {
         title: "",
         description: "",
         updated_at: "",
+        team: "",
       },
+      teams: [
+        { id: "A1", value: "Qatar" },
+        { id: "A2", value: "Ecuador" },
+        { id: "A3", value: "Senegal" },
+        { id: "A4", value: "Netherlands" },
+        { id: "B1", value: "England" },
+        { id: "B2", value: "Iran" },
+      ],
       isLoaded: false,
       error: null,
       wasSuccess: false,
@@ -139,7 +148,13 @@ export default class EditPrediction extends Component {
         .then((json) => {
           this.setState(
             {
-              prediction: json.prediction,
+              // prediction: json.prediction,
+              prediction: {
+                id: id,
+                title: json.prediction.title,
+                description: json.prediction.description,
+                team: json.prediction.team,
+              },
               isLoaded: true,
             },
             (error) => {
@@ -248,6 +263,15 @@ export default class EditPrediction extends Component {
                 errorMsg={"Please enter a title!"}
               />
 
+              <Select
+                title={"Winner"}
+                name={"team"}
+                options={this.state.teams}
+                value={prediction.team}
+                handleChange={this.handleChange}
+                placeholder={"Choose one ... "}
+              />
+
               <br />
               <TextArea
                 title="Description"
@@ -262,12 +286,9 @@ export default class EditPrediction extends Component {
             </div>
             <br />
             <button className="btn btn-primary"> save </button>
-            {/* <Link
-              to={`/myall/${this.props.id_user}`}
-              className="btn btn-warning ms-2"
-            >
+            <Link to={`/my`} className="btn btn-warning ms-2">
               cancel
-            </Link> */}
+            </Link>
             {prediction.id > 0 && (
               <a
                 href="#!"

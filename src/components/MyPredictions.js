@@ -25,7 +25,6 @@ export default class MyPredictions extends Component {
     };
 
     fetch(`${process.env.REACT_APP_API_URL}/v1/my`, requestOptions)
-      // .then((response) => response.json())
       .then((response) => {
         console.log("status code is ", response.status);
         if (response.status === 204) {

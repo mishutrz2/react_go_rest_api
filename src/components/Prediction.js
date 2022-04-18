@@ -65,6 +65,12 @@ export default class Prediction extends Component {
               </tr>
               <tr>
                 <td>
+                  <strong> winner: </strong>
+                </td>
+                <td> {prediction.team}</td>
+              </tr>
+              <tr>
+                <td>
                   <strong> description: </strong>
                 </td>
                 <td> {prediction.description}</td>
