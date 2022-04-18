@@ -63,7 +63,7 @@ export default class Prediction extends Component {
                 </td>
                 <td> {prediction.author}</td>
               </tr>
-              <tr>
+              <tr className="winnerRow">
                 <td>
                   <strong> winner: </strong>
                 </td>
