@@ -102,11 +102,20 @@ export default class Register extends Component {
   };
 
   render() {
+    let { error } = this.state;
+    if (error) {
+      return <div> {error.message} </div>;
+    }
     return (
       <Fragment>
         <br />
         <h2> create a new account </h2>
         <br />
+
+        <Alert
+          alertType={this.state.alert.type}
+          alertMessage={this.state.alert.message}
+        />
 
         <form className="pt-4" onSubmit={this.handleSubmit}>
           {/* FULL NAME */}

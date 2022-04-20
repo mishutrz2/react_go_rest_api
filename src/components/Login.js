@@ -111,11 +111,11 @@ export default class Login extends Component {
       <Fragment>
         <br />
 
-        <div class="row">
-          <div class="col-12 col-md-8">
+        <div className="row">
+          <div className="col-12 col-md-8">
             <h2> login page </h2>
           </div>
-          <div class="col-8 col-md-4">
+          <div className="col-8 col-md-4">
             <h6>
               {" "}
               No account? Click{" "}

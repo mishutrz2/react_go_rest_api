@@ -19,9 +19,8 @@ export default class Home extends Component {
           <p className="descriptivePs">
             Predictions for the 2022 Wolrd Cup Qatar can be registered, logged
             into a database and extracted in order to be displayed on this
-            website. Receive an invitation in order to register a new account.
-            By default, you can only view the predictions list. In order to
-            register a new prediction, you must log in first.
+            website. By default, you can only view the predictions list. In
+            order to register a new prediction, you must log in first.
           </p>
           <h4> Contact </h4>
           <p>Name: Mircea</p>

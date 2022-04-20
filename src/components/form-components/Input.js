@@ -13,6 +13,7 @@ const Input = (props) => {
         onChange={props.handleChange}
         placehoolder={props.placeholder}
         className={`form-control ${props.className}`}
+        autoComplete="off"
       />
 
       <div className={props.errorDiv}>{props.errorMsg} </div>

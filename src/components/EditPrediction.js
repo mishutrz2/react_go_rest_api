@@ -6,6 +6,45 @@ import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import Select from "./form-components/Select";
+
+const teams = [
+  { id: "Qatar", value: "Qatar" },
+  { id: "Ecuador", value: "Ecuador" },
+  { id: "Senegal", value: "Senegal" },
+  { id: "Netherlands", value: "Netherlands" },
+  { id: "England", value: "England" },
+  { id: "Iran", value: "Iran" },
+  { id: "USA", value: "USA" },
+  { id: "Ukraine/Scotland/Wales", value: "Ukraine/Scotland/Wales" },
+
+  { id: "Argentina", value: "Argentina" },
+  { id: "Saudi Arabia", value: "Saudi Arabia" },
+  { id: "Mexico", value: "Mexico" },
+  { id: "Poland", value: "Poland" },
+  { id: "France", value: "France" },
+  { id: "Australia/UAE/Peru", value: "Australia/UAE/Peru" },
+  { id: "Denmark", value: "Denmark" },
+  { id: "Tunisia", value: "Tunisia" },
+
+  { id: "Spain", value: "Spain" },
+  { id: "Costa Rica/New Zealand", value: "Costa Rica/New Zealand" },
+  { id: "Germany", value: "Germany" },
+  { id: "Japan", value: "Japan" },
+  { id: "Belgium", value: "Belgium" },
+  { id: "Canada", value: "Canada" },
+  { id: "Morocco", value: "Morocco" },
+  { id: "Croatia", value: "Croatia" },
+
+  { id: "Brazil", value: "Brazil" },
+  { id: "Serbia", value: "Serbia" },
+  { id: "Switzerland", value: "Switzerland" },
+  { id: "Cameroon", value: "Cameroon" },
+  { id: "Portugal", value: "Portugal" },
+  { id: "Ghana", value: "Ghana" },
+  { id: "Uruguay", value: "Uruguay" },
+  { id: "South Korea", value: "South Korea" },
+];
+
 export default class EditPrediction extends Component {
   // set the state inside the constructor
   constructor(props) {
@@ -19,43 +58,6 @@ export default class EditPrediction extends Component {
         updated_at: "",
         winner: "",
       },
-      teams: [
-        { id: "Qatar", value: "Qatar" },
-        { id: "Ecuador", value: "Ecuador" },
-        { id: "Senegal", value: "Senegal" },
-        { id: "Netherlands", value: "Netherlands" },
-        { id: "England", value: "England" },
-        { id: "Iran", value: "Iran" },
-        { id: "USA", value: "USA" },
-        { id: "Ukraine/Scotland/Wales", value: "Ukraine/Scotland/Wales" },
-
-        { id: "Argentina", value: "Argentina" },
-        { id: "Saudi Arabia", value: "Saudi Arabia" },
-        { id: "Mexico", value: "Mexico" },
-        { id: "Poland", value: "Poland" },
-        { id: "France", value: "France" },
-        { id: "Australia/UAE/Peru", value: "Australia/UAE/Peru" },
-        { id: "Denmark", value: "Denmark" },
-        { id: "Tunisia", value: "Tunisia" },
-
-        { id: "Spain", value: "Spain" },
-        { id: "Costa Rica/New Zealand", value: "Costa Rica/New Zealand" },
-        { id: "Germany", value: "Germany" },
-        { id: "Japan", value: "Japan" },
-        { id: "Belgium", value: "Belgium" },
-        { id: "Canada", value: "Canada" },
-        { id: "Morocco", value: "Morocco" },
-        { id: "Croatia", value: "Croatia" },
-
-        { id: "Brazil", value: "Brazil" },
-        { id: "Serbia", value: "Serbia" },
-        { id: "Switzerland", value: "Switzerland" },
-        { id: "Cameroon", value: "Cameroon" },
-        { id: "Portugal", value: "Portugal" },
-        { id: "Ghana", value: "Ghana" },
-        { id: "Uruguay", value: "Uruguay" },
-        { id: "South Korea", value: "South Korea" },
-      ],
       isLoaded: false,
       error: null,
       wasSuccess: false,
@@ -72,7 +74,8 @@ export default class EditPrediction extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit = (e) => {
+  // method vs arrow function
+  handleSubmit(e) {
     console.log("Form was submitted");
     e.preventDefault();
 
@@ -121,9 +124,9 @@ export default class EditPrediction extends Component {
           });
         }
       });
-  };
+  }
 
-  handleChange = (e) => {
+  handleChange(e) {
     let value = e.target.value;
     let name = e.target.name;
 
@@ -133,11 +136,13 @@ export default class EditPrediction extends Component {
         [name]: value,
       },
     }));
-  };
+  }
 
   hasError(key) {
     return this.state.errors.indexOf(key) !== -1;
   }
+
+  // lifecycleuri =>> mereu metode !!!
 
   componentDidUpdate() {
     if (this.state.wasSuccess === true) {
@@ -295,7 +300,7 @@ export default class EditPrediction extends Component {
               <Select
                 title={"Winner"}
                 name={"winner"}
-                options={this.state.teams}
+                options={teams}
                 value={prediction.winner}
                 handleChange={this.handleChange}
                 placeholder={"Choose one ... "}

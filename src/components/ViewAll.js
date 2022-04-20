@@ -8,6 +8,11 @@ export default class ViewAll extends Component {
     error: null,
   };
 
+  convertDateString(dateString) {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  }
+
   componentDidMount() {
     // fetch for grabbing data
     fetch(`${process.env.REACT_APP_API_URL}/v1/all`)
@@ -50,7 +55,33 @@ export default class ViewAll extends Component {
           <br />
           <h4> view all </h4>
           <br />
-          <ul>
+
+          <table className="table ">
+            <thead>
+              <tr>
+                <th> Title </th>
+                <th> Prediction </th>
+                <th> Last modified</th>
+              </tr>
+            </thead>
+            <tbody>
+              {predics.map((el) => (
+                <tr>
+                  <td>
+                    {" "}
+                    <Link to={`/all/${el.id}`} className="listButton">
+                      {el.title}
+                    </Link>
+                  </td>
+
+                  <td> {el.winner} </td>
+                  <td> {this.convertDateString(el.created_at)} </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* <ul>
             {predics.map((el) => (
               <li key={el.id}>
                 <Link to={`/all/${el.id}`} className="listButton">
@@ -58,7 +89,7 @@ export default class ViewAll extends Component {
                 </Link>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </Fragment>
       );
     }
